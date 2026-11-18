@@ -40,20 +40,13 @@
             }
         }
     </script>
-    <style>
-        /* Smooth scrolling */
-        html { scroll-behavior: smooth; }
-    </style>
-</head>
-<body class="bg-cream text-charcoal font-sans antialiased selection:bg-terracotta selection:text-white">
-
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-cream-dark transition-all duration-300">
+   <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-cream-dark transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <span class="font-serif text-2xl font-bold text-terracotta tracking-wide">Vara Wellness Labs</span>
+                    <a href="#" class="font-serif text-xl sm:text-2xl font-bold text-terracotta tracking-wide">Vara Wellness Labs</a>
                 </div>
                 
                 <!-- Desktop Nav -->
@@ -64,16 +57,30 @@
                     <a href="#founder" class="text-gray-600 hover:text-terracotta transition-colors text-sm font-medium uppercase tracking-wider">Our Story</a>
                 </nav>
                         
-                <!-- Header Pre-Order Button Code -->
+                <!-- Header Pre-Order Button & Mobile Menu Toggle -->
                 <div class="flex items-center">
-                    <a href="https://www.amazon.com/dp/B0H9BY146Y" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent rounded-full text-sm font-medium text-white bg-terracotta hover:bg-terracotta-dark shadow-md transition-all">
-                        Pre-Order on Amazon
+                    <a href="https://www.amazon.com/dp/B0H9BY146Y" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap inline-flex items-center justify-center px-3.5 py-2 sm:px-5 sm:py-2.5 border border-transparent rounded-full text-xs sm:text-sm font-medium text-white bg-terracotta hover:bg-terracotta-dark shadow-md transition-all">
+                        <span class="sm:hidden">Pre-Order</span>
+                        <span class="hidden sm:inline">Pre-Order on Amazon</span>
                     </a>
                     <!-- Mobile menu button -->
-                    <button class="md:hidden ml-4 p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" class="md:hidden ml-2 p-2 rounded-md text-charcoal hover:text-terracotta hover:bg-cream-dark focus:outline-none">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-cream-dark px-4 pt-3 pb-5 space-y-2 shadow-lg">
+            <a href="#problem" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-charcoal hover:bg-cream-dark hover:text-terracotta uppercase tracking-wider">The Problem</a>
+            <a href="#solution" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-charcoal hover:bg-cream-dark hover:text-terracotta uppercase tracking-wider">Our Formula</a>
+            <a href="#journey" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-charcoal hover:bg-cream-dark hover:text-terracotta uppercase tracking-wider">The Journey</a>
+            <a href="#founder" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-charcoal hover:bg-cream-dark hover:text-terracotta uppercase tracking-wider">Our Story</a>
+        </div>
+    </header>
                     </button>
                 </div>
             </div>
@@ -400,6 +407,22 @@
             </div>
         </div>
     </footer>
+<!-- Mobile Menu Toggle Script -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
 </body>
 </html>
